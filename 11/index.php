@@ -12,6 +12,8 @@ require_once "ServiceProduct.php";
 $db = new Conn("localhost", "son_pdo", "root", "");
 
 $product = new Product;
+$product->setName("HTML Course")->setDesc("Build a complete website!");
+
 $service = new ServiceProduct($db, $product);
 
-print_r($service->listar());
+print_r($service->save());
