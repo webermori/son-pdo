@@ -32,7 +32,14 @@ class ServiceProduct
 
     public function update()
     {
-        
+        $query = "update `products` set `name`=?, `desc`=? WHERE `id`=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(1, $this->product->getName());
+        $stmt->bindValue(2, $this->product->getDesc());
+        $stmt->bindValue(3, $this->product->getId());
+        $ret = $stmt->execute();
+        return $ret;
+
     }
 
     public function delete()
